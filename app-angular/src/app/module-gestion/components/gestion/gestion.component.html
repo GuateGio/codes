@@ -1,0 +1,73 @@
+<div class="row h-100">
+    <div class="col-md-2 pl-0 pr-0 border-right">
+        <div class="card border-0 card-h-100">
+            <div class="card-header text-center border-bottom-0">
+                <h5 class="font-weight-bold">Gestiones</h5>
+            </div>
+            <div class="card-body text-center">
+                <span>NUEVAS</span>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item border-bottom d-flex justify-content-between align-items-left" *ngFor='let key of  [1,2,3,4]'>
+                    <i class="fa fa-folder-open-o"></i>
+                    <span class="font-weight-bold">Categoria {{key}}</span>
+                    <i class="fa fa-ellipsis-v"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-5 pl-0 pr-0">
+        <div class="card card-h-100 card-border border-right" [ngClass]="{'col-toggle':ocultar}">
+            <div class="position-absolute text-right w-100 top-50" style="z-index: 1;">
+                <button type="button" class="btn btn-toggle" (click)="ocultar = !ocultar"><i class="fa" [ngClass]="ocultar ? 'fa-caret-right' : 'fa-caret-left'"></i></button>
+            </div>
+            <div class="card-body text-center" style="z-index: 0;" [ngClass]="{'d-none':ocultar}">
+                <div class="row pb-3">
+                    <div class="col-md-6 text-left">
+                        <button type="button" class="btn btn-default btn-circle"><i class="fa fa-plus-square-o fa-2x"></i></button>
+                        <span class="pl-2 text-button font-weight-bold">Agregar gestión</span>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <div class="select-icon right-icon">
+                                <i class="fa fa-sort-amount-desc"></i>
+                                <select class="form-control input-rounded text-gray">
+                                    <option value="" selected disabled>Ordenar por</option>
+                                    <option>Ascendente</option>
+                                    <option>Descendente</option>
+                                  </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-md-11">
+                        <div class="form-group">
+                            <input type="text" class="form-control input-rounded" placeholder="Buscar aquí">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-no-border">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Gestión #</th>
+                                    <th scope="col">Nombre Completo</th>
+                                    <th scope="col">DPI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of gestiones" [ngClass]="row.row_class">
+                                    <td>{{row.nro_gestion}}</td>
+                                    <td>{{row.nombre_completo}}</td>
+                                    <td>{{row.dpi}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
